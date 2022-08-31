@@ -1,6 +1,10 @@
 # STAGE 1: layered build of PolkADAPT submodule and Polkascan Explorer application.
 
-FROM node:lts-alpine as builder
+FROM node:16-alpine as builder
+
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
+RUN apk add chromium
 
 # The application depends on PolkADAPT, so we have to install and build PolkADAPT first.
 
